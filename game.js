@@ -74,16 +74,28 @@ class SokobanGame {
         this.restartButton.addEventListener('click', () => this.restartGame());
 
         // タッチ操作のイベントリスナー
+        this.upButton.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            this.handleDirection(DIRECTIONS.UP);
+        });
+        this.downButton.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            this.handleDirection(DIRECTIONS.DOWN);
+        });
+        this.leftButton.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            this.handleDirection(DIRECTIONS.LEFT);
+        });
+        this.rightButton.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            this.handleDirection(DIRECTIONS.RIGHT);
+        });
+
+        // クリックイベントも残す（デスクトップ用）
         this.upButton.addEventListener('click', () => this.handleDirection(DIRECTIONS.UP));
         this.downButton.addEventListener('click', () => this.handleDirection(DIRECTIONS.DOWN));
         this.leftButton.addEventListener('click', () => this.handleDirection(DIRECTIONS.LEFT));
         this.rightButton.addEventListener('click', () => this.handleDirection(DIRECTIONS.RIGHT));
-
-        // タッチイベントの防止
-        this.upButton.addEventListener('touchstart', (e) => e.preventDefault());
-        this.downButton.addEventListener('touchstart', (e) => e.preventDefault());
-        this.leftButton.addEventListener('touchstart', (e) => e.preventDefault());
-        this.rightButton.addEventListener('touchstart', (e) => e.preventDefault());
     }
 
     // ゲーム制御
