@@ -442,7 +442,10 @@ class SokobanGame {
         this.updateUndoCountDisplay();
         this.updateStageDisplay();
         this.clearMessage();
-        this.render();
+        
+        // ゲームコンテナを非表示にし、タイトル画面を表示
+        this.gameContainer.style.display = 'none';
+        this.titleScreen.style.display = 'flex';
     }
 
     // プレイヤー操作
