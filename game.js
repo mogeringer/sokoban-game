@@ -420,6 +420,7 @@ class SokobanGame {
         this.history = [];
         this.undoCount = GAME_CONSTANTS.SETTINGS.MAX_UNDO_COUNT;
         this.updateUndoCountDisplay();
+        this.updateStageDisplay();
         this.clearMessage();
         this.render();
     }
@@ -429,17 +430,18 @@ class SokobanGame {
         this.history = [];
         this.undoCount = GAME_CONSTANTS.SETTINGS.MAX_UNDO_COUNT;
         this.updateUndoCountDisplay();
+        this.updateStageDisplay();
         this.clearMessage();
         this.render();
     }
 
     restartGame() {
-        // すべてのステージの状態を初期化
         this.levels = JSON.parse(JSON.stringify(this.initialLevels));
         this.currentLevel = 0;
         this.history = [];
         this.undoCount = GAME_CONSTANTS.SETTINGS.MAX_UNDO_COUNT;
         this.updateUndoCountDisplay();
+        this.updateStageDisplay();
         this.clearMessage();
         this.render();
     }
