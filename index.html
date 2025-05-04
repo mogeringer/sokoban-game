@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>るかの倉庫番</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="title-screen">
+        <h1>るかの倉庫番</h1>
+        <div class="rules">
+            <h2>ゲームのルール</h2>
+            <ul>
+                <li>矢印キーまたは画面のボタンでプレイヤーを動かします</li>
+                <li>箱を押してゴールに運びます</li>
+                <li>すべての箱をゴールに運ぶとクリアです</li>
+                <li>箱は壁や他の箱を押すことはできません</li>
+                <li>元に戻す操作は2回までです</li>
+            </ul>
+        </div>
+        <button id="start-button">ゲーム開始</button>
+    </div>
+    <div class="game-container">
+        <div class="game-controls">
+            <button id="reset">リセット</button>
+            <button id="undo">元に戻す</button>
+            <div id="current-stage">ステージ: 1</div>
+            <div id="undo-count">残り回数: 2</div>
+        </div>
+        <div id="game-board"></div>
+        <div id="message"></div>
+        <div class="touch-controls">
+            <button id="up" class="direction-button">↑</button>
+            <div class="horizontal-buttons">
+                <button id="left" class="direction-button">←</button>
+                <button id="right" class="direction-button">→</button>
+            </div>
+            <button id="down" class="direction-button">↓</button>
+        </div>
+    </div>
+    <script src="game.js"></script>
+</body>
+</html> 
