@@ -48,6 +48,7 @@ class SokobanGame {
         this.startButton = document.getElementById('start-button');
         this.gameContainer = document.querySelector('.game-container');
         this.undoCountDisplay = document.getElementById('undo-count');
+        this.restartButton = document.getElementById('restart');
         
         // タッチ操作のための要素
         this.upButton = document.getElementById('up');
@@ -70,6 +71,7 @@ class SokobanGame {
         this.undoButton.addEventListener('click', () => this.undo());
         document.addEventListener('keydown', (e) => this.handleKeyPress(e));
         this.startButton.addEventListener('click', () => this.startGame());
+        this.restartButton.addEventListener('click', () => this.restartGame());
 
         // タッチ操作のイベントリスナー
         this.upButton.addEventListener('click', () => this.handleDirection(DIRECTIONS.UP));
@@ -412,6 +414,17 @@ class SokobanGame {
 
     resetLevel() {
         this.levels[this.currentLevel] = JSON.parse(JSON.stringify(this.initialLevels[this.currentLevel]));
+        this.history = [];
+        this.undoCount = GAME_CONSTANTS.SETTINGS.MAX_UNDO_COUNT;
+        this.updateUndoCountDisplay();
+        this.clearMessage();
+        this.render();
+    }
+
+    restartGame() {
+        // すべてのステージの状態を初期化
+        this.levels = JSON.parse(JSON.stringify(this.initialLevels));
+        this.currentLevel = 0;
         this.history = [];
         this.undoCount = GAME_CONSTANTS.SETTINGS.MAX_UNDO_COUNT;
         this.updateUndoCountDisplay();
