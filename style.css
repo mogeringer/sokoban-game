@@ -120,8 +120,8 @@ button:hover {
 }
 
 .wall {
-    background-color: #8b4513;
-    border: 2px solid #654321;
+    background-color: #654321;
+    border: 2px solid #3d2600;
 }
 
 .player {
@@ -129,7 +129,8 @@ button:hover {
 }
 
 .box {
-    background-color: #8b4513;
+    background-color: #d2b48c;
+    border: 2px solid #b8860b;
 }
 
 .goal {
@@ -239,16 +240,22 @@ button:hover {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
+    gap: 5px;
     z-index: 100;
-    padding: 20px;
+    padding: 10px;
     background-color: rgba(255, 255, 255, 0.9);
     border-top: 1px solid #e0e0e0;
 }
 
 .horizontal-buttons {
     display: flex;
-    gap: 40px;
+    gap: 60px;
+}
+
+.vertical-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
 }
 
 .direction-button {
@@ -310,7 +317,7 @@ button:hover {
     }
 
     .horizontal-buttons {
-        gap: 30px;
+        gap: 50px;
     }
 }
 
@@ -328,7 +335,7 @@ button:hover {
     }
 
     .horizontal-buttons {
-        gap: 20px;
+        gap: 40px;
     }
 }
 
@@ -354,6 +361,11 @@ button:hover {
 
     .horizontal-buttons {
         flex-direction: column;
+        gap: 20px;
+    }
+
+    .vertical-buttons {
+        flex-direction: row;
         gap: 20px;
     }
 } 
