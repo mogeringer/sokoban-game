@@ -688,8 +688,9 @@ class SokobanGame {
         const boardWidth = level.width * cellSize;
         const boardHeight = level.height * cellSize;
         
+        // プレイヤーを画面の上部寄りに配置するために、Y軸のオフセットを調整
         const offsetX = (boardWidth / 2) - (player.x * cellSize);
-        const offsetY = (boardHeight / 2) - (player.y * cellSize);
+        const offsetY = (boardHeight / 3) - (player.y * cellSize); // 1/3の位置に調整
         
         this.board.style.transform = `translate(calc(-50% + ${offsetX}px), calc(-50% + ${offsetY}px))`;
     }
