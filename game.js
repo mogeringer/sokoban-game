@@ -288,6 +288,9 @@ class SokobanGame {
         level.goals.push({ x: 7, y: 10 });
         level.goals.push({ x: 8, y: 10 });
 
+        // プレイヤーの初期位置を設定
+        level.player = { x: 3, y: 3 };
+
         return level;
     }
 
@@ -309,10 +312,10 @@ class SokobanGame {
         );
 
         // 箱を配置（5つの箱）
-        level.boxes.push({ x: 2, y: 2 });
-        level.boxes.push({ x: 2, y: 15 });
-        level.boxes.push({ x: 15, y: 2 });
-        level.boxes.push({ x: 15, y: 15 });
+        level.boxes.push({ x: 3, y: 3 });
+        level.boxes.push({ x: 3, y: 14 });
+        level.boxes.push({ x: 14, y: 3 });
+        level.boxes.push({ x: 14, y: 14 });
         level.boxes.push({ x: 8, y: 8 });
 
         // ゴールを配置（5つのゴール）
@@ -321,6 +324,9 @@ class SokobanGame {
         level.goals.push({ x: 7, y: 11 });
         level.goals.push({ x: 10, y: 11 });
         level.goals.push({ x: 8, y: 9 });
+
+        // プレイヤーの初期位置を設定
+        level.player = { x: 2, y: 2 };
 
         return level;
     }
@@ -583,16 +589,16 @@ class SokobanGame {
                 message = 'ステージ5クリア！\n5つの箱をゴールに運びました。';
                 break;
             case 6:
-                message = 'ステージ6クリア！\n6つの箱をゴールに運びました。';
+                message = 'ステージ6クリア！\n3つの箱をゴールに運びました。';
                 break;
             case 7:
-                message = 'ステージ7クリア！\n7つの箱をゴールに運びました。';
+                message = 'ステージ7クリア！\n4つの箱をゴールに運びました。';
                 break;
             case 8:
-                message = 'ステージ8クリア！\n8つの箱をゴールに運びました。';
+                message = 'ステージ8クリア！\n5つの箱をゴールに運びました。';
                 break;
             case 9:
-                message = 'ステージ9クリア！\n9つの箱をゴールに運びました。';
+                message = 'ステージ9クリア！\n6つの箱をゴールに運びました。';
                 break;
             case 10:
                 message = GAME_CONSTANTS.MESSAGES.ALL_CLEAR;
