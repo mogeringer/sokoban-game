@@ -238,33 +238,29 @@ button:hover {
     left: 0;
     right: 0;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    gap: 5px;
     z-index: 100;
-    padding: 10px;
-    background-color: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.95);
     border-top: 1px solid #e0e0e0;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
 }
 
-.horizontal-buttons {
-    display: flex;
-    gap: 60px;
+.dpad-container {
+    position: relative;
+    width: 240px;
+    height: 240px;
 }
 
-.vertical-buttons {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-}
-
-.direction-button {
-    width: 80px;
-    height: 80px;
-    font-size: 32px;
-    background-color: rgba(245, 245, 245, 0.9);
+.dpad-button {
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    font-size: 28px;
+    background-color: #f8f8f8;
     color: #333;
-    border: 1px solid #e0e0e0;
+    border: 2px solid #e0e0e0;
     border-radius: 50%;
     cursor: pointer;
     display: flex;
@@ -277,10 +273,34 @@ button:hover {
     touch-action: manipulation;
 }
 
-.direction-button:active {
+.dpad-button:active {
     background-color: #e0e0e0;
     transform: scale(0.95);
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+#up {
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#down {
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#left {
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+#right {
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 @media (max-width: 768px) {
@@ -310,14 +330,15 @@ button:hover {
         font-size: 14px;
     }
 
-    .direction-button {
-        width: 70px;
-        height: 70px;
-        font-size: 28px;
+    .dpad-container {
+        width: 220px;
+        height: 220px;
     }
 
-    .horizontal-buttons {
-        gap: 50px;
+    .dpad-button {
+        width: 65px;
+        height: 65px;
+        font-size: 26px;
     }
 }
 
@@ -328,24 +349,25 @@ button:hover {
         font-size: 16px;
     }
 
-    .direction-button {
+    .dpad-container {
+        width: 200px;
+        height: 200px;
+    }
+
+    .dpad-button {
         width: 60px;
         height: 60px;
         font-size: 24px;
-    }
-
-    .horizontal-buttons {
-        gap: 40px;
     }
 }
 
 /* タッチデバイス用のスタイル */
 @media (hover: none) {
-    .direction-button:hover {
+    .dpad-button:hover {
         background-color: rgba(245, 245, 245, 0.9);
     }
 
-    .direction-button:active {
+    .dpad-button:active {
         background-color: #e0e0e0;
         transform: scale(0.95);
     }
@@ -354,18 +376,6 @@ button:hover {
 /* 画面の向きに応じた調整 */
 @media (orientation: landscape) {
     .touch-controls {
-        flex-direction: row;
-        justify-content: center;
-        gap: 20px;
-    }
-
-    .horizontal-buttons {
-        flex-direction: column;
-        gap: 20px;
-    }
-
-    .vertical-buttons {
-        flex-direction: row;
-        gap: 20px;
+        padding: 10px;
     }
 } 
