@@ -239,28 +239,23 @@ class SokobanGame {
         const level = this.createBaseLevel(14, 14);
         this.addSurroundingWalls(level);
 
-        level.walls.push(
-            { x: 6, y: 2 }, { x: 6, y: 3 }, { x: 6, y: 4 }, { x: 6, y: 5 }, { x: 6, y: 6 },
-            { x: 7, y: 2 }, { x: 7, y: 3 }, { x: 7, y: 4 }, { x: 7, y: 5 }, { x: 7, y: 6 },
-            { x: 9, y: 2 }, { x: 9, y: 3 }, { x: 9, y: 4 },
-            { x: 9, y: 6 }, { x: 9, y: 7 }, { x: 9, y: 8 }, { x: 9, y: 9 },
-            { x: 2, y: 9 }, { x: 3, y: 9 }, { x: 4, y: 9 },
-            { x: 3, y: 4 }, { x: 3, y: 5 },
-            { x: 11, y: 4 }, { x: 11, y: 5 }
-        );
+        // 中央に十字型の壁を配置
+        for (let x = 4; x <= 9; x++) {
+            level.walls.push({ x, y: 6 });
+        }
+        for (let y = 4; y <= 9; y++) {
+            level.walls.push({ x: 6, y });
+        }
 
+        // 箱を配置（3つの箱）
         level.boxes.push({ x: 2, y: 2 });
-        level.boxes.push({ x: 2, y: 3 });
-        level.boxes.push({ x: 2, y: 4 });
-        level.boxes.push({ x: 3, y: 2 });
-        level.boxes.push({ x: 4, y: 2 });
-        level.boxes.push({ x: 5, y: 2 });
-        level.goals.push({ x: 8, y: 2 });
-        level.goals.push({ x: 8, y: 3 });
-        level.goals.push({ x: 8, y: 4 });
-        level.goals.push({ x: 10, y: 10 });
+        level.boxes.push({ x: 2, y: 11 });
+        level.boxes.push({ x: 11, y: 2 });
+
+        // ゴールを配置（3つのゴール）
         level.goals.push({ x: 11, y: 11 });
-        level.goals.push({ x: 12, y: 12 });
+        level.goals.push({ x: 2, y: 6 });
+        level.goals.push({ x: 11, y: 6 });
 
         return level;
     }
@@ -269,31 +264,29 @@ class SokobanGame {
         const level = this.createBaseLevel(16, 16);
         this.addSurroundingWalls(level);
 
+        // 迷路のような壁の配置
         level.walls.push(
-            { x: 7, y: 2 }, { x: 7, y: 3 }, { x: 7, y: 4 }, { x: 7, y: 5 }, { x: 7, y: 6 }, { x: 7, y: 7 },
-            { x: 8, y: 2 }, { x: 8, y: 3 }, { x: 8, y: 4 }, { x: 8, y: 5 }, { x: 8, y: 6 }, { x: 8, y: 7 },
-            { x: 10, y: 2 }, { x: 10, y: 3 }, { x: 10, y: 4 },
-            { x: 10, y: 6 }, { x: 10, y: 7 }, { x: 10, y: 8 }, { x: 10, y: 9 }, { x: 10, y: 10 },
-            { x: 2, y: 10 }, { x: 3, y: 10 }, { x: 4, y: 10 },
-            { x: 3, y: 4 }, { x: 3, y: 5 },
-            { x: 12, y: 4 }, { x: 12, y: 5 },
-            { x: 5, y: 8 }, { x: 5, y: 9 }
+            { x: 4, y: 4 }, { x: 5, y: 4 }, { x: 6, y: 4 },
+            { x: 4, y: 5 }, { x: 6, y: 5 },
+            { x: 4, y: 6 }, { x: 5, y: 6 }, { x: 6, y: 6 },
+            { x: 9, y: 4 }, { x: 10, y: 4 }, { x: 11, y: 4 },
+            { x: 9, y: 5 }, { x: 11, y: 5 },
+            { x: 9, y: 6 }, { x: 10, y: 6 }, { x: 11, y: 6 },
+            { x: 7, y: 8 }, { x: 8, y: 8 },
+            { x: 7, y: 9 }, { x: 8, y: 9 }
         );
 
+        // 箱を配置（4つの箱）
         level.boxes.push({ x: 2, y: 2 });
-        level.boxes.push({ x: 2, y: 3 });
-        level.boxes.push({ x: 2, y: 4 });
-        level.boxes.push({ x: 3, y: 2 });
-        level.boxes.push({ x: 4, y: 2 });
-        level.boxes.push({ x: 5, y: 2 });
-        level.boxes.push({ x: 6, y: 2 });
-        level.goals.push({ x: 9, y: 2 });
-        level.goals.push({ x: 9, y: 3 });
-        level.goals.push({ x: 9, y: 4 });
-        level.goals.push({ x: 11, y: 11 });
-        level.goals.push({ x: 12, y: 12 });
-        level.goals.push({ x: 13, y: 13 });
-        level.goals.push({ x: 14, y: 14 });
+        level.boxes.push({ x: 2, y: 13 });
+        level.boxes.push({ x: 13, y: 2 });
+        level.boxes.push({ x: 13, y: 13 });
+
+        // ゴールを配置（4つのゴール）
+        level.goals.push({ x: 7, y: 7 });
+        level.goals.push({ x: 8, y: 7 });
+        level.goals.push({ x: 7, y: 10 });
+        level.goals.push({ x: 8, y: 10 });
 
         return level;
     }
@@ -302,34 +295,32 @@ class SokobanGame {
         const level = this.createBaseLevel(18, 18);
         this.addSurroundingWalls(level);
 
+        // 複雑な壁の配置
         level.walls.push(
-            { x: 8, y: 2 }, { x: 8, y: 3 }, { x: 8, y: 4 }, { x: 8, y: 5 }, { x: 8, y: 6 }, { x: 8, y: 7 }, { x: 8, y: 8 },
-            { x: 9, y: 2 }, { x: 9, y: 3 }, { x: 9, y: 4 }, { x: 9, y: 5 }, { x: 9, y: 6 }, { x: 9, y: 7 }, { x: 9, y: 8 },
-            { x: 11, y: 2 }, { x: 11, y: 3 }, { x: 11, y: 4 },
-            { x: 11, y: 6 }, { x: 11, y: 7 }, { x: 11, y: 8 }, { x: 11, y: 9 }, { x: 11, y: 10 }, { x: 11, y: 11 },
-            { x: 2, y: 11 }, { x: 3, y: 11 }, { x: 4, y: 11 },
-            { x: 3, y: 4 }, { x: 3, y: 5 },
-            { x: 13, y: 4 }, { x: 13, y: 5 },
-            { x: 5, y: 9 }, { x: 5, y: 10 },
-            { x: 14, y: 7 }, { x: 14, y: 8 }
+            { x: 4, y: 4 }, { x: 5, y: 4 }, { x: 6, y: 4 },
+            { x: 4, y: 5 }, { x: 6, y: 5 },
+            { x: 4, y: 6 }, { x: 5, y: 6 }, { x: 6, y: 6 },
+            { x: 11, y: 4 }, { x: 12, y: 4 }, { x: 13, y: 4 },
+            { x: 11, y: 5 }, { x: 13, y: 5 },
+            { x: 11, y: 6 }, { x: 12, y: 6 }, { x: 13, y: 6 },
+            { x: 7, y: 8 }, { x: 8, y: 8 }, { x: 9, y: 8 }, { x: 10, y: 8 },
+            { x: 7, y: 9 }, { x: 10, y: 9 },
+            { x: 7, y: 10 }, { x: 8, y: 10 }, { x: 9, y: 10 }, { x: 10, y: 10 }
         );
 
+        // 箱を配置（5つの箱）
         level.boxes.push({ x: 2, y: 2 });
-        level.boxes.push({ x: 2, y: 3 });
-        level.boxes.push({ x: 2, y: 4 });
-        level.boxes.push({ x: 3, y: 2 });
-        level.boxes.push({ x: 4, y: 2 });
-        level.boxes.push({ x: 5, y: 2 });
-        level.boxes.push({ x: 6, y: 2 });
-        level.boxes.push({ x: 7, y: 2 });
-        level.goals.push({ x: 10, y: 2 });
-        level.goals.push({ x: 10, y: 3 });
-        level.goals.push({ x: 10, y: 4 });
-        level.goals.push({ x: 12, y: 12 });
-        level.goals.push({ x: 13, y: 13 });
-        level.goals.push({ x: 14, y: 14 });
-        level.goals.push({ x: 15, y: 15 });
-        level.goals.push({ x: 16, y: 16 });
+        level.boxes.push({ x: 2, y: 15 });
+        level.boxes.push({ x: 15, y: 2 });
+        level.boxes.push({ x: 15, y: 15 });
+        level.boxes.push({ x: 8, y: 8 });
+
+        // ゴールを配置（5つのゴール）
+        level.goals.push({ x: 7, y: 7 });
+        level.goals.push({ x: 10, y: 7 });
+        level.goals.push({ x: 7, y: 11 });
+        level.goals.push({ x: 10, y: 11 });
+        level.goals.push({ x: 8, y: 9 });
 
         return level;
     }
@@ -338,37 +329,37 @@ class SokobanGame {
         const level = this.createBaseLevel(20, 20);
         this.addSurroundingWalls(level);
 
+        // より複雑な迷路の配置
         level.walls.push(
-            { x: 9, y: 2 }, { x: 9, y: 3 }, { x: 9, y: 4 }, { x: 9, y: 5 }, { x: 9, y: 6 }, { x: 9, y: 7 }, { x: 9, y: 8 }, { x: 9, y: 9 },
-            { x: 10, y: 2 }, { x: 10, y: 3 }, { x: 10, y: 4 }, { x: 10, y: 5 }, { x: 10, y: 6 }, { x: 10, y: 7 }, { x: 10, y: 8 }, { x: 10, y: 9 },
-            { x: 12, y: 2 }, { x: 12, y: 3 }, { x: 12, y: 4 },
-            { x: 12, y: 6 }, { x: 12, y: 7 }, { x: 12, y: 8 }, { x: 12, y: 9 }, { x: 12, y: 10 }, { x: 12, y: 11 }, { x: 12, y: 12 },
-            { x: 2, y: 12 }, { x: 3, y: 12 }, { x: 4, y: 12 },
-            { x: 3, y: 4 }, { x: 3, y: 5 },
-            { x: 14, y: 4 }, { x: 14, y: 5 },
-            { x: 5, y: 10 }, { x: 5, y: 11 },
-            { x: 15, y: 7 }, { x: 15, y: 8 },
-            { x: 7, y: 13 }, { x: 7, y: 14 }
+            { x: 4, y: 4 }, { x: 5, y: 4 }, { x: 6, y: 4 }, { x: 7, y: 4 },
+            { x: 4, y: 5 }, { x: 7, y: 5 },
+            { x: 4, y: 6 }, { x: 5, y: 6 }, { x: 6, y: 6 }, { x: 7, y: 6 },
+            { x: 12, y: 4 }, { x: 13, y: 4 }, { x: 14, y: 4 }, { x: 15, y: 4 },
+            { x: 12, y: 5 }, { x: 15, y: 5 },
+            { x: 12, y: 6 }, { x: 13, y: 6 }, { x: 14, y: 6 }, { x: 15, y: 6 },
+            { x: 8, y: 8 }, { x: 9, y: 8 }, { x: 10, y: 8 }, { x: 11, y: 8 },
+            { x: 8, y: 9 }, { x: 11, y: 9 },
+            { x: 8, y: 10 }, { x: 9, y: 10 }, { x: 10, y: 10 }, { x: 11, y: 10 },
+            { x: 6, y: 12 }, { x: 7, y: 12 }, { x: 8, y: 12 }, { x: 9, y: 12 },
+            { x: 6, y: 13 }, { x: 9, y: 13 },
+            { x: 6, y: 14 }, { x: 7, y: 14 }, { x: 8, y: 14 }, { x: 9, y: 14 }
         );
 
+        // 箱を配置（6つの箱）
         level.boxes.push({ x: 2, y: 2 });
-        level.boxes.push({ x: 2, y: 3 });
-        level.boxes.push({ x: 2, y: 4 });
-        level.boxes.push({ x: 3, y: 2 });
-        level.boxes.push({ x: 4, y: 2 });
-        level.boxes.push({ x: 5, y: 2 });
-        level.boxes.push({ x: 6, y: 2 });
-        level.boxes.push({ x: 7, y: 2 });
-        level.boxes.push({ x: 8, y: 2 });
-        level.goals.push({ x: 11, y: 2 });
-        level.goals.push({ x: 11, y: 3 });
-        level.goals.push({ x: 11, y: 4 });
-        level.goals.push({ x: 13, y: 13 });
-        level.goals.push({ x: 14, y: 14 });
-        level.goals.push({ x: 15, y: 15 });
-        level.goals.push({ x: 16, y: 16 });
-        level.goals.push({ x: 17, y: 17 });
-        level.goals.push({ x: 18, y: 18 });
+        level.boxes.push({ x: 2, y: 17 });
+        level.boxes.push({ x: 17, y: 2 });
+        level.boxes.push({ x: 17, y: 17 });
+        level.boxes.push({ x: 9, y: 9 });
+        level.boxes.push({ x: 10, y: 9 });
+
+        // ゴールを配置（6つのゴール）
+        level.goals.push({ x: 7, y: 7 });
+        level.goals.push({ x: 12, y: 7 });
+        level.goals.push({ x: 7, y: 12 });
+        level.goals.push({ x: 12, y: 12 });
+        level.goals.push({ x: 9, y: 11 });
+        level.goals.push({ x: 10, y: 11 });
 
         return level;
     }
@@ -377,40 +368,42 @@ class SokobanGame {
         const level = this.createBaseLevel(22, 22);
         this.addSurroundingWalls(level);
 
+        // 最も複雑な迷路の配置
         level.walls.push(
-            { x: 10, y: 2 }, { x: 10, y: 3 }, { x: 10, y: 4 }, { x: 10, y: 5 }, { x: 10, y: 6 }, { x: 10, y: 7 }, { x: 10, y: 8 }, { x: 10, y: 9 }, { x: 10, y: 10 },
-            { x: 11, y: 2 }, { x: 11, y: 3 }, { x: 11, y: 4 }, { x: 11, y: 5 }, { x: 11, y: 6 }, { x: 11, y: 7 }, { x: 11, y: 8 }, { x: 11, y: 9 }, { x: 11, y: 10 },
-            { x: 13, y: 2 }, { x: 13, y: 3 }, { x: 13, y: 4 },
-            { x: 13, y: 6 }, { x: 13, y: 7 }, { x: 13, y: 8 }, { x: 13, y: 9 }, { x: 13, y: 10 }, { x: 13, y: 11 }, { x: 13, y: 12 }, { x: 13, y: 13 },
-            { x: 2, y: 13 }, { x: 3, y: 13 }, { x: 4, y: 13 },
-            { x: 3, y: 4 }, { x: 3, y: 5 },
-            { x: 15, y: 4 }, { x: 15, y: 5 },
-            { x: 5, y: 11 }, { x: 5, y: 12 },
-            { x: 16, y: 7 }, { x: 16, y: 8 },
-            { x: 7, y: 14 }, { x: 7, y: 15 },
-            { x: 17, y: 10 }, { x: 17, y: 11 }
+            { x: 4, y: 4 }, { x: 5, y: 4 }, { x: 6, y: 4 }, { x: 7, y: 4 }, { x: 8, y: 4 },
+            { x: 4, y: 5 }, { x: 8, y: 5 },
+            { x: 4, y: 6 }, { x: 5, y: 6 }, { x: 6, y: 6 }, { x: 7, y: 6 }, { x: 8, y: 6 },
+            { x: 13, y: 4 }, { x: 14, y: 4 }, { x: 15, y: 4 }, { x: 16, y: 4 }, { x: 17, y: 4 },
+            { x: 13, y: 5 }, { x: 17, y: 5 },
+            { x: 13, y: 6 }, { x: 14, y: 6 }, { x: 15, y: 6 }, { x: 16, y: 6 }, { x: 17, y: 6 },
+            { x: 9, y: 8 }, { x: 10, y: 8 }, { x: 11, y: 8 }, { x: 12, y: 8 },
+            { x: 9, y: 9 }, { x: 12, y: 9 },
+            { x: 9, y: 10 }, { x: 10, y: 10 }, { x: 11, y: 10 }, { x: 12, y: 10 },
+            { x: 6, y: 12 }, { x: 7, y: 12 }, { x: 8, y: 12 }, { x: 9, y: 12 },
+            { x: 6, y: 13 }, { x: 9, y: 13 },
+            { x: 6, y: 14 }, { x: 7, y: 14 }, { x: 8, y: 14 }, { x: 9, y: 14 },
+            { x: 12, y: 12 }, { x: 13, y: 12 }, { x: 14, y: 12 }, { x: 15, y: 12 },
+            { x: 12, y: 13 }, { x: 15, y: 13 },
+            { x: 12, y: 14 }, { x: 13, y: 14 }, { x: 14, y: 14 }, { x: 15, y: 14 }
         );
 
+        // 箱を配置（7つの箱）
         level.boxes.push({ x: 2, y: 2 });
-        level.boxes.push({ x: 2, y: 3 });
-        level.boxes.push({ x: 2, y: 4 });
-        level.boxes.push({ x: 3, y: 2 });
-        level.boxes.push({ x: 4, y: 2 });
-        level.boxes.push({ x: 5, y: 2 });
-        level.boxes.push({ x: 6, y: 2 });
-        level.boxes.push({ x: 7, y: 2 });
-        level.boxes.push({ x: 8, y: 2 });
-        level.boxes.push({ x: 9, y: 2 });
-        level.goals.push({ x: 12, y: 2 });
-        level.goals.push({ x: 12, y: 3 });
-        level.goals.push({ x: 12, y: 4 });
+        level.boxes.push({ x: 2, y: 19 });
+        level.boxes.push({ x: 19, y: 2 });
+        level.boxes.push({ x: 19, y: 19 });
+        level.boxes.push({ x: 10, y: 10 });
+        level.boxes.push({ x: 11, y: 10 });
+        level.boxes.push({ x: 10, y: 11 });
+
+        // ゴールを配置（7つのゴール）
+        level.goals.push({ x: 7, y: 7 });
+        level.goals.push({ x: 14, y: 7 });
+        level.goals.push({ x: 7, y: 14 });
         level.goals.push({ x: 14, y: 14 });
-        level.goals.push({ x: 15, y: 15 });
-        level.goals.push({ x: 16, y: 16 });
-        level.goals.push({ x: 17, y: 17 });
-        level.goals.push({ x: 18, y: 18 });
-        level.goals.push({ x: 19, y: 19 });
-        level.goals.push({ x: 20, y: 20 });
+        level.goals.push({ x: 10, y: 13 });
+        level.goals.push({ x: 11, y: 13 });
+        level.goals.push({ x: 10, y: 14 });
 
         return level;
     }
