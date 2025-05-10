@@ -18,7 +18,8 @@ const GAME_CONSTANTS = {
     // ゲーム設定
     SETTINGS: {
         NEXT_LEVEL_DELAY: 1000,
-        MAX_UNDO_COUNT: 2
+        MAX_UNDO_COUNT: 2,
+        TIMER_INTERVAL: 1000 // タイマーの更新間隔（ミリ秒）
     }
 };
 
@@ -49,6 +50,7 @@ class SokobanGame {
         this.gameContainer = document.querySelector('.game-container');
         this.undoCountDisplay = document.getElementById('undo-count');
         this.restartButton = document.getElementById('restart');
+        this.timerDisplay = document.getElementById('timer');
         
         // タッチ操作のための要素
         this.upButton = document.getElementById('up');
@@ -63,7 +65,11 @@ class SokobanGame {
         this.currentLevel = 0;
         this.history = [];
         this.undoCount = GAME_CONSTANTS.SETTINGS.MAX_UNDO_COUNT;
+        this.startTime = null;
+        this.timerInterval = null;
+        this.elapsedTime = 0;
         this.updateUndoCountDisplay();
+        this.initializeLevels();
     }
 
     initializeEventListeners() {
@@ -103,6 +109,7 @@ class SokobanGame {
         this.titleScreen.style.display = 'none';
         this.gameContainer.style.display = 'block';
         this.loadLevel(0);
+        this.startTimer();
     }
 
     createLevels() {
@@ -442,6 +449,7 @@ class SokobanGame {
         this.updateUndoCountDisplay();
         this.updateStageDisplay();
         this.clearMessage();
+        this.stopTimer();
         
         // ゲームコンテナを非表示にし、タイトル画面を表示
         this.gameContainer.style.display = 'none';
@@ -614,7 +622,12 @@ class SokobanGame {
     proceedToNextLevel() {
         setTimeout(() => {
             if (this.currentLevel < this.levels.length - 1) {
-                this.loadLevel(this.currentLevel + 1);
+                const nextLevel = this.currentLevel + 1;
+                // ステージ5をクリアした時（currentLevelが4の時）にタイマーを停止
+                if (this.currentLevel === 4) {
+                    this.stopTimer();
+                }
+                this.loadLevel(nextLevel);
             } else {
                 this.message.textContent = GAME_CONSTANTS.MESSAGES.ALL_CLEAR;
             }
@@ -720,6 +733,33 @@ class SokobanGame {
             this.render();
             this.checkWin();
         }
+    }
+
+    // タイマー関連のメソッド
+    startTimer() {
+        if (this.timerInterval) {
+            clearInterval(this.timerInterval);
+        }
+        this.startTime = Date.now();
+        this.elapsedTime = 0;
+        this.updateTimerDisplay();
+        this.timerInterval = setInterval(() => {
+            this.elapsedTime = Math.floor((Date.now() - this.startTime) / 1000);
+            this.updateTimerDisplay();
+        }, GAME_CONSTANTS.SETTINGS.TIMER_INTERVAL);
+    }
+
+    stopTimer() {
+        if (this.timerInterval) {
+            clearInterval(this.timerInterval);
+            this.timerInterval = null;
+        }
+    }
+
+    updateTimerDisplay() {
+        const minutes = Math.floor(this.elapsedTime / 60);
+        const seconds = this.elapsedTime % 60;
+        this.timerDisplay.textContent = `時間: ${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
     }
 }
 
